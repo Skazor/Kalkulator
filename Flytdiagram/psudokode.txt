@@ -1,0 +1,60 @@
+PROGRAM Kalkulator
+
+KLASSE Calculator:
+METODE Add(a, b) --> returner a + b
+METODE Add(tall: List) --> summer alle tall i listen, returner sum
+
+METODE Subtract(a, b) -> returner a - b
+METODE Subtract(tall: List) --> start med tall[0], trekk fra resten, returner resultat
+
+METODE Multiply(a, b) --> returner a * b
+METODE Multiply(tall: List) --> start med tall[0], multipliser med resten, returner resultat
+
+METODE Divide(a, b) --> HVIS b == 0: kast feil
+ELLERS: returner a / b
+
+METODE Divide(tall: List) --> HVIS noen tall etter første == 0: kast feil
+ELLERS: start med tall[0], divider med resten, returner resultat
+
+HOVEDPROGRAM:
+calc = ny Calculator
+
+GJENTA:
+Vis meny: +  -  *  /  Q
+Les operasjon fra bruker
+
+HVIS operasjon == Q:
+            Avslutt programmet
+
+Spør: "Ett tall eller flere?" (1 / F)
+        Les valg
+
+        HVIS valg == 1:
+            Les tall1 som tekst
+            Les tall2 som tekst
+            HVIS TryParse(tall1) feiler ELLER TryParse(tall2) feiler:
+                Vis "Ugyldig tall"
+                Fortsett til toppen av løkken
+
+            HVIS operasjon == +: Vis calc.Add(tall1, tall2)
+            HVIS operasjon == -: Vis calc.Subtract(tall1, tall2)
+            HVIS operasjon == *: Vis calc.Multiply(tall1, tall2)
+            HVIS operasjon == /:
+                HVIS tall2 == 0: Vis "Kan ikke dele på null"
+                ELLERS: Vis calc.Divide(tall1, tall2)
+
+        HVIS valg == F:
+            Les én streng med komma-separerte tall
+            Split strengen på komma --> lag liste av tekst-elementer
+            FOR hvert element:
+                HVIS TryParse feiler: Vis feil, fortsett til toppen
+            Konverter alle til double --> tallListe
+
+            HVIS operasjon == +: Vis calc.Add(tallListe)
+            HVIS operasjon == -: Vis calc.Subtract(tallListe)
+            HVIS operasjon == *: Vis calc.Multiply(tallListe)
+            HVIS operasjon == /:
+                HVIS noen tall etter første == 0: Vis "Kan ikke dele på null"
+                ELLERS: Vis calc.Divide(tallListe)
+
+    HELT TIL bruker velger Q

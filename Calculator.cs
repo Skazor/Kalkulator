@@ -7,7 +7,7 @@ public class Calculator
         return a + b;
     }
 
-    public double Substract(double a, double b)
+    public double Subtract(double a, double b)
     {
         return a - b;
     }
@@ -31,7 +31,7 @@ public class Calculator
         return sum;
     }
 
-    public double Substract(List<double> tall)
+    public double Subtract(List<double> tall)
     {
         double result = tall[0];
         for (int i = 1; i < tall.Count; i++)
